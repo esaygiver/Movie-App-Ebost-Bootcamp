@@ -1,1 +1,1 @@
-# Movie-App---Ebost-Bootcamp
+# Movie-App-Ebost-Bootcamp
