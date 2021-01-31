@@ -8,5 +8,6 @@ target 'Esay - Movie App' do
   # Pods for Esay - Movie App
 pod 'Alamofire', '~> 5.4'
 pod 'Kingfisher', '~> 6.0'
+pod 'Moya', '~> 14.0'
 
 end

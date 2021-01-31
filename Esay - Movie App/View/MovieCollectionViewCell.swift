@@ -14,7 +14,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var movieImage: UIImageView!
         
-    func configureTrends(with model: Results) {
+    func configureTrends(with model: Movie) {
         self.movieTitleLabel.text = model.title
         self.movieImage.fetchImage(from: model.backdropURL.absoluteString ?? "")
         

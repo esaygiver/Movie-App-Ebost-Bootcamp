@@ -18,7 +18,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var castCollectionViewHeightConstraint: NSLayoutConstraint!
     
     fileprivate var cast = [Cast]()
-    var movie: ResultsForPopularMovies!
+    var movie: Movie!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,7 @@ extension DetailViewController {
     func updatingOutlets() {
         movieTitle.text = self.movie.title
         movieOverview.text = self.movie.overview
-        movieVote.text = String(self.movie.vote_average)
+        movieVote.text = String(self.movie.rate)
         movieImage.fetchImage(from: movie.backdropURL.absoluteString)
     }
 }

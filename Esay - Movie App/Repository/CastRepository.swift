@@ -14,7 +14,11 @@ class CastRepository {
         
         AF.request("https://api.themoviedb.org/3/movie/\(movieID)/credits?api_key=660a71826e07d00e08b7baa0a340d61b&language=en-US", method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil, interceptor: nil).responseJSON { (responseData) in
             
-            if (responseData.response?.statusCode == 200) {
+            guard let statusCode = responseData.response?.statusCode else { (fatalError())
+                return
+            }
+            
+            if (statusCode == 200) {
                 do {
                     var resultForCast: CastResponseModel? = try JSONDecoder().decode(CastResponseModel.self, from: responseData.data!)
                     successHandler(resultForCast!)

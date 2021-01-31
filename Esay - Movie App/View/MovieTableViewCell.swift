@@ -28,9 +28,9 @@ class MovieTableViewCell: UITableViewCell {
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
     }
 
-    func configure(with model: ResultsForPopularMovies) {
+    func configure(with model: Movie) {
         self.movieTitleLabel.text = model.title
-        self.movieReleaseDate.text = "Release Date: \(model.release_date)"
+        self.movieReleaseDate.text = "\(model.releaseDate)"
         self.movieOverview.text = model.overview
         self.moviePosterImage.fetchImage(from: model.posterURL.absoluteString)
     }

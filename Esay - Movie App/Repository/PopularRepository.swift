@@ -10,14 +10,14 @@ import UIKit
 import Alamofire
 
 class PopularRepository {
-    static func getPopularMovies(successHandler: @escaping successHandler<PopularMovies>, failureHandler: @escaping failureHandler ) {
+    static func getPopularMovies(successHandler: @escaping successHandler<DataResults>, failureHandler: @escaping failureHandler ) {
     let popularMovieURL = "https:api.themoviedb.org/3/movie/popular?api_key=660a71826e07d00e08b7baa0a340d61b&language=en-US&page=1"
     AF.request(popularMovieURL, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil, interceptor: nil).responseJSON { (responseData) in
         
         guard let data = responseData.data else { return }
         if (responseData.response?.statusCode == 200) {
             do {
-                var resultForPopularMovies: PopularMovies? = try JSONDecoder().decode(PopularMovies.self, from: data)
+                var resultForPopularMovies: DataResults? = try JSONDecoder().decode(DataResults.self, from: data)
                 successHandler(resultForPopularMovies!)
             } catch {
                 failureHandler("Parsing error!")
