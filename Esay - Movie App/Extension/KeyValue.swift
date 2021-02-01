@@ -13,12 +13,15 @@ enum URLs: String, CaseIterable {
         case trendingMoviesURL
         case imageURL
         case castProfileURL
+        case APIKey
     }
  
 func getURL(on platform: URLs) -> String {
     let apiKey = "api_key=660a71826e07d00e08b7baa0a340d61b&language=en-US&page=1"
     let baseURL = "https://api.themoviedb.org/3/"
         switch platform {
+        case .APIKey:
+            return "660a71826e07d00e08b7baa0a340d61b"
         case .popularMoviesURL:
             return "\(baseURL)movie/popular?\(apiKey)"
         case .trendingMoviesURL:

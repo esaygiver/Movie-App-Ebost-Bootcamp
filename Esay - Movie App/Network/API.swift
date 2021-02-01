@@ -15,7 +15,7 @@ enum MovieAPI {
     case cast(movieID: Int)
 }
 
-let APIKey = "660a71826e07d00e08b7baa0a340d61b"
+let APIKey = getURL(on: .APIKey)
 
 extension MovieAPI: TargetType {
     
