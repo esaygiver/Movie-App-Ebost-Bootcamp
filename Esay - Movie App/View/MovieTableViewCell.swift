@@ -14,14 +14,13 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet var movieTitleLabel: UILabel!
     @IBOutlet var moviePosterImage: UIImageView!
     @IBOutlet var movieReleaseDate: UILabel!
+    @IBOutlet var shadowLayerOfCell: UIImageView!
     @IBOutlet var movieOverview: UILabel! {
         didSet {
             movieOverview.numberOfLines = 3
         }
     }
-    @IBOutlet var shadowLayerOfCell: UIImageView!
     
-
     override func layoutSubviews() {
         super.layoutSubviews()
 

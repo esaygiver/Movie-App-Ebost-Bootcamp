@@ -26,25 +26,29 @@ class ViewController: UIViewController {
         tableView.dataSource = self
         collectionView.delegate = self
         collectionView.dataSource = self
-        searchPopularMovies()
-        searchTrendingMovies()
-  //      getsPopularMovies()
+        getsPopularMovies()
+        getTrends()
         
     }
 }
 
+//MARK: - Network Requests
+
 extension ViewController {
     func getsPopularMovies() {
-        networkManager.fetchPopularMovies { (result) in
-            
-            print(result)
-//            switch result {
-//            case .success(let popularMovies):
-//                self.popularMovies = popularMovies
-//
-//            case .failure:
-//                print("We got an issue!")
-//            }
+        networkManager.fetchPopularMovies { [weak self] movies in
+            self?.popularMovies = movies
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
+    }
+    func getTrends() {
+        networkManager.fetchTrendingMovies { [weak self] movies in
+            self?.trendingMovies = movies
+            DispatchQueue.main.async {
+                self?.collectionView.reloadData()
+            }
         }
     }
 }
@@ -74,9 +78,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         self.show(detailViewController, sender: self)
         
     }
-    
 }
-
 
 //MARK: - CollectionView DataSource, Flowlayout and Delegate methods
 
@@ -101,45 +103,5 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
 }
 
-//MARK: - Popular Movies Request
-extension ViewController {
-    func searchPopularMovies() {
-        PopularRepository.getPopularMovies(successHandler: popularListSuccessHandler(responseModel:), failureHandler: popularListFailureHandler(errorMessage:))
-    }
 
-    func popularListSuccessHandler(responseModel: DataResults) {
-        if responseModel != nil {
-            self.popularMovies.append(contentsOf: responseModel.movies)
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        } else {
-            print("sıçtık")
-        }
-    }
-
-    func popularListFailureHandler(errorMessage: String) {
-        print(errorMessage)
-    }
-
-}
-
-//MARK: - Trend Movies Request
-extension ViewController {
-    func searchTrendingMovies() {
-        TrendRepository.getTrends(successHandler: trendingListSuccessHandler(responseModel:), failureHandler: trendingListFailureHandler(errorMessage:))
-    }
-    func trendingListSuccessHandler(responseModel: DataResults) {
-        if responseModel != nil {
-            self.trendingMovies.append(contentsOf: responseModel.movies)
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
-    }
-    
-    func trendingListFailureHandler(errorMessage: String) {
-        print(errorMessage)
-    }
-}
 

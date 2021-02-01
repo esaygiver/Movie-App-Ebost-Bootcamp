@@ -9,9 +9,12 @@
 import UIKit
 
 struct DataResults: Codable {
+    let page: Int
+//    let numResults: Int
+//    let numpages: Int
     let movies: [Movie]
     
     private enum CodingKeys: String, CodingKey {
-        case movies = "results"
+        case movies = "results", page
     }
 }

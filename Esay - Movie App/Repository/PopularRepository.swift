@@ -11,8 +11,8 @@ import Alamofire
 
 class PopularRepository {
     static func getPopularMovies(successHandler: @escaping successHandler<DataResults>, failureHandler: @escaping failureHandler ) {
-    let popularMovieURL = "https:api.themoviedb.org/3/movie/popular?api_key=660a71826e07d00e08b7baa0a340d61b&language=en-US&page=1"
-    AF.request(popularMovieURL, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil, interceptor: nil).responseJSON { (responseData) in
+        
+        AF.request(getURL(on: .popularMoviesURL), method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil, interceptor: nil).responseJSON { (responseData) in
         
         guard let data = responseData.data else { return }
         if (responseData.response?.statusCode == 200) {

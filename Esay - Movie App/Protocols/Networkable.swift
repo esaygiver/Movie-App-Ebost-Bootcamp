@@ -10,6 +10,9 @@ import Foundation
 import Moya
 
 protocol Networkable {
-    var provider: MoyaProvider<API> { get }
-    func fetchPopularMovies(completion: @escaping (Result<Movie, Error>) -> () )
+    var provider: MoyaProvider<MovieAPI> { get }
+    func fetchPopularMovies(completion: @escaping ([Movie]) -> () )
+    func fetchTrendingMovies(completion: @escaping ([Movie]) -> () )
+    func fetchCast(movieID: Int, completion: @escaping ([Cast]) -> () )
+    
 }

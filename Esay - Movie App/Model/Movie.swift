@@ -10,19 +10,19 @@ import UIKit
 
 struct Movie: Codable {
 
-    let title: String?
-    let posterPath: String?
+    let title: String
+    let posterPath: String
     let releaseDate: String
-    let overview: String?
+    let overview: String
     let id: Int
-    let backDrop: String?
+    let backDrop: String
     let rate: Double
     
     var posterURL: URL {
-        return URL(string: "https://image.tmdb.org/t/p/original\(posterPath ?? "")")!
+        return URL(string: "\(getURL(on: .imageURL))\(posterPath ?? "")")!
     }
     var backdropURL: URL {
-        return URL(string: "https://image.tmdb.org/t/p/original\(backDrop ?? "")")!
+        return URL(string: "\(getURL(on: .imageURL))\(backDrop ?? "")")!
     }
     
     private enum CodingKeys: String, CodingKey {
