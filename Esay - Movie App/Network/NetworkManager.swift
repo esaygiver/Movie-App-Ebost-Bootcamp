@@ -60,6 +60,39 @@ class NetworkManager: Networkable {
             }
         }
     }
+    
+    
+    public func fetchVideo(movieID: Int, completion: @escaping ([Video]) -> ()) {
+        provider.request(.video(movieID: movieID)) { result in
+            switch result {
+            case let .success(response):
+                do {
+                    let results = try JSONDecoder().decode(VideoResults.self, from: response.data)
+                    completion(results.videos)
+                } catch let error {
+                    dump(error)
+                }
+            case let .failure(error):
+                dump(error)
+            }
+        }
+    }
+    
+    public func fetchReviews(movieID: Int, completion: @escaping ([Review]) -> ()) {
+        provider.request(.review(movieID: movieID)) { result in
+            switch result {
+            case let .success(response):
+                do {
+                    let results = try JSONDecoder().decode(ReviewData.self, from: response.data)
+                    completion(results.review)
+                } catch let error {
+                    dump(error)
+                }
+            case let .failure(error):
+                dump(error)
+            }
+        }
+    }
 }
 
 

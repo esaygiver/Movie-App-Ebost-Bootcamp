@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SafariServices
 
 class DetailViewController: UIViewController {
     @IBOutlet var movieImage: UIImageView!
@@ -15,11 +16,14 @@ class DetailViewController: UIViewController {
     @IBOutlet var movieOverview: UITextView!
     @IBOutlet var movieVote: UILabel!
     @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var trailerButton: UIButton!
+    @IBOutlet var reviewButton: UIButton!
     @IBOutlet weak var castCollectionViewHeightConstraint: NSLayoutConstraint!
     var networkManager = NetworkManager()
     
     fileprivate var cast = [Cast]()
-    var movie: Movie!
+    public var movie: Movie!
+    fileprivate var video = [Video]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,13 +31,36 @@ class DetailViewController: UIViewController {
         collectionView.delegate = self
         castCollectionViewHeightConstraint.constant = 0
         updatingOutlets()
-//        searchCast()
         getCast()
+        getVideo()
+        getCurvyButton(trailerButton)
+        getCurvyButton(reviewButton)
         
+        
+    }
+    
+    @IBAction func reviewButtonTapped(_ sender: UIButton) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "ExtraDetailViewController") as! ExtraDetailViewController
+        vc.movie = movie
+        present(vc, animated: true)
+    }
+    @IBAction func trailerButtonTapped(_ sender: UIButton) {
+        guard let url = URL(string: "https://www.youtube.com/watch?v=\(video.first!.key)") else {
+               return
+           }
+        let vc = SFSafariViewController(url: URL(string: url.absoluteString)!)
+        present(vc, animated: true)
     }
 }
 
+//MARK: - Network Request
 extension DetailViewController {
+    func getVideo() {
+        networkManager.fetchVideo(movieID: self.movie.id) { videos in
+            self.video = videos
+        }
+    }
+    
     func getCast() {
         networkManager.fetchCast(movieID: self.movie.id) { [weak self] casts in
             self?.cast = casts
@@ -73,23 +100,16 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return cell
     }
 }
-
-//extension DetailViewController {
-//    func searchCast() {
-//        CastRepository.getCast(movieID: self.movie.id, successHandler: castListSuccessHandler(responseModel:), failureHandler: castListFailureHandler(errorMessage:))
-//    }
-//
-//    func castListSuccessHandler(responseModel: CastResponseModel) {
-//        if (!responseModel.cast.isEmpty || responseModel.cast != nil) {
-//            self.cast.append(contentsOf: responseModel.cast)
-//            castCollectionViewHeightConstraint.constant = 170
-//            self.collectionView.reloadData()
-//        }
-//    }
-//
-//    func castListFailureHandler(errorMessage: String) {
-//        print(errorMessage)
-//    }
-//}
-
+//MARK: - Button with curves and shadows
+extension DetailViewController {
+    func getCurvyButton(_ button: UIButton) {
+        button.layer.cornerRadius = button.frame.size.height / 2
+        
+        button.layer.masksToBounds = false
+        button.layer.shadowColor = UIColor.lightGray.cgColor
+        button.layer.shadowOpacity = 1.0
+        button.layer.shadowRadius = 0
+        button.layer.shadowOffset = CGSize(width: 0, height: 3)
+    }
+}
 

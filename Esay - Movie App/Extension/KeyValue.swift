@@ -14,12 +14,16 @@ enum URLs: String, CaseIterable {
         case imageURL
         case castProfileURL
         case APIKey
+        case baseURL
+        case youtubeURL
     }
  
 func getURL(on platform: URLs) -> String {
     let apiKey = "api_key=660a71826e07d00e08b7baa0a340d61b&language=en-US&page=1"
     let baseURL = "https://api.themoviedb.org/3/"
         switch platform {
+        case .baseURL:
+            return "https://api.themoviedb.org/3/"
         case .APIKey:
             return "660a71826e07d00e08b7baa0a340d61b"
         case .popularMoviesURL:
@@ -30,7 +34,9 @@ func getURL(on platform: URLs) -> String {
             return "https://image.tmdb.org/t/p/original"
         case .castProfileURL:
             return "https://image.tmdb.org/t/p/w500"
-        }
+        case .youtubeURL:
+            return "https://www.youtube.com/watch?v="
+    }
     return platform.rawValue
     }
 

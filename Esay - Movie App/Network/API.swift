@@ -13,6 +13,8 @@ enum MovieAPI {
     case popular
     case trends
     case cast(movieID: Int)
+    case video(movieID: Int)
+    case review(movieID: Int)
 }
 
 let APIKey = getURL(on: .APIKey)
@@ -20,7 +22,7 @@ let APIKey = getURL(on: .APIKey)
 extension MovieAPI: TargetType {
     
     var baseURL: URL {
-        guard let url = URL(string: "https://api.themoviedb.org/3/") else { fatalError() }
+        guard let url = URL(string: getURL(on: .baseURL)) else { fatalError() }
         return url
     }
     
@@ -32,11 +34,15 @@ extension MovieAPI: TargetType {
             return "trending/movie/day"
         case .cast(movieID: let movieID):
             return "movie/\(movieID)/credits"
+        case .video(movieID: let movieID):
+            return "movie/\(movieID)/videos"
+        case .review(movieID: let movieID):
+            return "movie/\(movieID)/reviews"
         }
     }
     var method: Moya.Method {
         switch self {
-        case .popular, .trends, .cast:
+        case .popular, .trends, .cast(_), .video(_), .review(_):
             return .get
         }
     }
@@ -47,7 +53,7 @@ extension MovieAPI: TargetType {
     
     var task: Task {
         switch self {
-        case .popular, .trends, .cast:
+        case .popular, .trends, .cast, .video(_), .review(_):
             return .requestParameters(parameters: ["api_key" : APIKey], encoding: URLEncoding.queryString)
         }
     }

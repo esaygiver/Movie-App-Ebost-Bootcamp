@@ -17,6 +17,7 @@ struct Movie: Codable {
     let id: Int
     let backDrop: String
     let rate: Double
+    let videoPath: String?
     
     var posterURL: URL {
         return URL(string: "\(getURL(on: .imageURL))\(posterPath ?? "")")!
@@ -26,7 +27,16 @@ struct Movie: Codable {
     }
     
     private enum CodingKeys: String, CodingKey {
-        case posterPath = "poster_path", backDrop = "backdrop_path", rate = "vote_average", releaseDate = "release_date", title, overview, id
+        case posterPath = "poster_path", backDrop = "backdrop_path", rate = "vote_average", releaseDate = "release_date", title, overview, id, videoPath
+    }
+}
+
+struct DataResults: Codable {
+    let page: Int
+    let movies: [Movie]
+    
+    private enum CodingKeys: String, CodingKey {
+        case movies = "results", page
     }
 }
 

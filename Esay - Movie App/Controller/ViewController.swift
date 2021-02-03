@@ -33,7 +33,6 @@ class ViewController: UIViewController {
 }
 
 //MARK: - Network Requests
-
 extension ViewController {
     func getsPopularMovies() {
         networkManager.fetchPopularMovies { [weak self] movies in
