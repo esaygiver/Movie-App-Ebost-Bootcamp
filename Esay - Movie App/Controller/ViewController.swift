@@ -99,6 +99,10 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
+        let selectedTrendingMovies = trendingMovies[indexPath.row]
+        let detailViewController = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        detailViewController.movie = selectedTrendingMovies
+        self.show(detailViewController, sender: self)
     }
 }
 

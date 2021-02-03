@@ -17,7 +17,7 @@ enum MovieAPI {
     case review(movieID: Int)
 }
 
-let APIKey = getURL(on: .APIKey)
+fileprivate let APIKey = getURL(on: .APIKey)
 
 extension MovieAPI: TargetType {
     

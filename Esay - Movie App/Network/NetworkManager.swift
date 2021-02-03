@@ -12,7 +12,7 @@ import Moya
 class NetworkManager: Networkable {
     
     var provider = MoyaProvider<MovieAPI>(plugins: [NetworkLoggerPlugin()])
-    
+
     func fetchPopularMovies(completion: @escaping ([Movie]) -> ()) {
         provider.request(.popular) { result in
             switch result {
@@ -96,12 +96,9 @@ class NetworkManager: Networkable {
 }
 
 
-
-
-
-
+//
 //private extension NetworkManager {
-//    private func request<T: Codable>(target: API, completion: @escaping ([Movie]) -> ()) {
+//    private func request<T: Codable>(target: MovieAPI, completion: @escaping (Result<T, Error>) -> ()) {
 //        provider.request(target) { result in
 //            switch result {
 //            case let .success(response):
