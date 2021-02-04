@@ -181,8 +181,8 @@
 			isa = PBXGroup;
 			children = (
 				845A580E258A3BC50036D105 /* Movie.swift */,
-				84E736D725C89BB70062C99D /* Video.swift */,
 				84891D5F25BCA58200DCEBFA /* Cast.swift */,
+				84E736D725C89BB70062C99D /* Video.swift */,
 				84E736DB25C9607C0062C99D /* Review.swift */,
 			);
 			path = Model;

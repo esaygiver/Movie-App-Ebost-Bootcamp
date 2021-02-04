@@ -10,28 +10,43 @@ import UIKit
 import Moya
 
 class ExtraDetailViewController: UIViewController {
-
+    
+    @IBOutlet weak var webView: UIWebView!
     @IBOutlet var tableView: UITableView!
     var review = [Review]()
     var movie: Movie!
+    var video = [Video]()
     var networkManager = NetworkManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.delegate = self
         tableView.dataSource = self
         getReviews()
+        getVideo()
     }
     
 }
-//MARK: - Review Request Part
+//MARK: - Review and Video Request Part
 extension ExtraDetailViewController {
     func getReviews() {
         networkManager.fetchReviews(movieID: self.movie.id) { reviews in
             self.review = reviews
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+            }
+        }
+    }
+    func getVideo() {
+        networkManager.fetchVideo(movieID: self.movie.id) { videos in
+            self.video = videos
+            guard let url = URL(string: "https://www.youtube.com/watch?v=\(self.video.first!.key)") else {
+                return
+            }
+            DispatchQueue.main.async {
+                self.webView.loadRequest(URLRequest(url: url))
+
             }
         }
     }

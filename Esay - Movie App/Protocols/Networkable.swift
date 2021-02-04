@@ -14,5 +14,7 @@ protocol Networkable {
     func fetchPopularMovies(completion: @escaping ([Movie]) -> () )
     func fetchTrendingMovies(completion: @escaping ([Movie]) -> () )
     func fetchCast(movieID: Int, completion: @escaping ([Cast]) -> () )
+    func fetchVideo(movieID: Int, completion: @escaping ([Video]) -> ())
+    func fetchReviews(movieID: Int, completion: @escaping ([Review]) -> ())
     
 }

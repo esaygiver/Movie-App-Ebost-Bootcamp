@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Alamofire
+import Moya
 import Kingfisher
 
 class ViewController: UIViewController {
