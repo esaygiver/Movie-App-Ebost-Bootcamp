@@ -15,7 +15,7 @@ class DetailViewController: UIViewController {
     @IBOutlet var movieOverview: UITextView!
     @IBOutlet var movieVote: UILabel!
     @IBOutlet var collectionView: UICollectionView!
-    @IBOutlet var reviewButton: UIButton!
+    @IBOutlet var trailerAndReviewButton: UIButton!
     @IBOutlet weak var castCollectionViewHeightConstraint: NSLayoutConstraint!
     var networkManager = NetworkManager()
     
@@ -29,10 +29,10 @@ class DetailViewController: UIViewController {
         castCollectionViewHeightConstraint.constant = 0
         updatingOutlets()
         getCast()
-        getCurvyButton(reviewButton)
+        getCurvyButton(trailerAndReviewButton)
     }
     
-    @IBAction func reviewButtonTapped(_ sender: UIButton) {
+    @IBAction func trailerAndReviewButtonTapped(_ sender: UIButton) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "ExtraDetailViewController") as! ExtraDetailViewController
         vc.movie = movie
         present(vc, animated: true)
