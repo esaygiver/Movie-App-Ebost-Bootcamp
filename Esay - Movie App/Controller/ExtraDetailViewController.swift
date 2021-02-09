@@ -31,7 +31,7 @@ class ExtraDetailViewController: UIViewController {
 //MARK: - Review and Video Request Part
 extension ExtraDetailViewController {
     func getReviews() {
-        networkManager.fetchReviews(movieID: self.movie.id) { reviews in
+        networkManager.fetchReviews(movieID: self.movie.id ?? 399566) { reviews in
             self.review = reviews
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -39,7 +39,7 @@ extension ExtraDetailViewController {
         }
     }
     func getVideo() {
-        networkManager.fetchVideo(movieID: self.movie.id) { videos in
+        networkManager.fetchVideo(movieID: self.movie.id ?? 399566) { videos in
             self.video = videos
             guard let url = URL(string: "https://www.youtube.com/watch?v=\(self.video.first!.key)") else {
                 return
