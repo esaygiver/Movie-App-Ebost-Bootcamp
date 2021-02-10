@@ -11,13 +11,14 @@ import UIKit
 struct Cast: Codable {
     let profilePath: String?
     let name: String?
+    let id: Int?
     
     var profileURL: URL {
         return URL(string: "\(getURL(on: .castProfileURL))\(profilePath ?? "")")!
     }
     
     private enum CodingKeys: String, CodingKey {
-        case profilePath = "profile_path", name
+        case profilePath = "profile_path", name, id
     }
 }
 

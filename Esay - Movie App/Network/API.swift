@@ -15,6 +15,8 @@ enum MovieAPI {
     case cast(movieID: Int)
     case video(movieID: Int)
     case review(movieID: Int)
+    case search(query: String)
+
 }
 
 fileprivate let APIKey = getURL(on: .APIKey)
@@ -38,11 +40,13 @@ extension MovieAPI: TargetType {
             return "movie/\(movieID)/videos"
         case .review(movieID: let movieID):
             return "movie/\(movieID)/reviews"
+        case .search(_):
+            return "search/movie"
         }
     }
     var method: Moya.Method {
         switch self {
-        case .popular, .trends, .cast(_), .video(_), .review(_):
+        case .popular, .trends, .cast(_), .video(_), .review(_), .search(_):
             return .get
         }
     }
@@ -55,6 +59,8 @@ extension MovieAPI: TargetType {
         switch self {
         case .popular, .trends, .cast, .video(_), .review(_):
             return .requestParameters(parameters: ["api_key" : APIKey], encoding: URLEncoding.queryString)
+        case .search(query: let query):
+            return .requestParameters(parameters: ["api_key" : APIKey, "query": query], encoding: URLEncoding.queryString)
         }
     }
     

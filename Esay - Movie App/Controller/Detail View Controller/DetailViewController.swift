@@ -8,6 +8,7 @@
 
 import UIKit
 import Moya
+import SafariServices
 
 class DetailViewController: UIViewController {
 
@@ -94,6 +95,14 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let myCell = cast[indexPath.row]
         cell.configureCast(model: myCell)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let selectedCastID = cast[indexPath.row].id
+        let url = "\(getURL(on: .castTMDBPage))\(selectedCastID ?? 12345)"
+        let vc = SFSafariViewController(url: URL(string: url)!)
+        present(vc, animated: true)
     }
 }
 //MARK: - Button with curves and shadows

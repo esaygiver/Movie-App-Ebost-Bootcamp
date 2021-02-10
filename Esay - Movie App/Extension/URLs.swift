@@ -16,6 +16,7 @@ enum URLs: String, CaseIterable {
         case APIKey
         case baseURL
         case youtubeURL
+        case castTMDBPage
     }
  
 func getURL(on platform: URLs) -> String {
@@ -36,6 +37,8 @@ func getURL(on platform: URLs) -> String {
             return "https://image.tmdb.org/t/p/w500"
         case .youtubeURL:
             return "https://www.youtube.com/watch?v="
+        case .castTMDBPage:
+            return "https://www.themoviedb.org/person/"
     }
     return platform.rawValue
     }
