@@ -22,7 +22,7 @@ class SearchViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         searchBar.delegate = self
-        searchMovieOrCast()
+        searchBar.enablesReturnKeyAutomatically = false
     }
 }
 
@@ -32,15 +32,22 @@ extension SearchViewController: UISearchBarDelegate {
         searchBar.endEditing(true)
     }
     
-    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
-        searchBar.endEditing(true)
-        searchMovieOrCast()
-        return true
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard let query = searchBar.text else { return }
+        if !query.isEmpty {
+            fetchMovies(query: query)
+        } else {
+            self.movie = []
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
     }
-    
-    func searchMovieOrCast() {
-        searchBar.resignFirstResponder()
-        guard let query = searchBar.text, !query.isEmpty else { return }
+}
+
+//MARK: - Network Request
+extension SearchViewController {
+    func fetchMovies(query: String) {
         networkManager.searchMovies(query: query) { [weak self] (results) in
             self?.movie = results
             DispatchQueue.main.async {
@@ -49,6 +56,7 @@ extension SearchViewController: UISearchBarDelegate {
         }
     }
 }
+
 
 //MARK: - Movie CollectionView Part
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -74,6 +82,4 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         detailViewController.movie = searchedMovies
         self.show(detailViewController, sender: self)
     }
-    
-    
 }
