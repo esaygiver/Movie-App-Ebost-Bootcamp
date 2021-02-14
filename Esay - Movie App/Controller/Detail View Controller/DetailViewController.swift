@@ -11,17 +11,21 @@ import Moya
 import SafariServices
 
 class DetailViewController: UIViewController {
-
+    
+    //MARK: - IBOutlets
     @IBOutlet var movieImage: UIImageView!
     @IBOutlet var movieTitle: UILabel!
     @IBOutlet var movieOverview: UITextView!
     @IBOutlet var movieVote: UILabel!
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var trailerAndReviewButton: UIButton!
+    @IBOutlet var releaseDate: UILabel!
     @IBOutlet weak var castCollectionViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var embeddedVCHeight: NSLayoutConstraint!
     @IBOutlet weak var scrollHeight: NSLayoutConstraint!
     
+    
+    //  var favoriteMovieArray = [String]()
     var networkManager = NetworkManager()
     fileprivate var cast = [Cast]()
     public var movie: Movie!
@@ -38,13 +42,29 @@ class DetailViewController: UIViewController {
         getCurvyButton(trailerAndReviewButton)
         
     }
-//MARK: - Embedding ExtraDetailVC to DetailVC part
+    //MARK: - Embedding ExtraDetailVC to DetailVC part
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "goToExtraDetailVC" {
-        let destinationVC = segue.destination as! ExtraDetailViewController
-        destinationVC.movie = movie
+        if segue.identifier == "goToExtraDetailVC" {
+            let destinationVC = segue.destination as! ExtraDetailViewController
+            destinationVC.movie = movie
+        }
     }
-}
+    
+//    @IBAction func favoriteButtonTapped(_ sender: UIButton) {
+//        if favoriteButton.tintColor == .lightGray {
+//            favoriteButton.tintColor = .yellow
+//            //            NotificationCenter.default.post(name: Notification.Name("favoriteMovies"), object: movieTitle.text)
+//            //    favoriteMovieArray.append(movieTitle.text!)
+//            //   print(favoriteMovieArray)
+//        } else {
+//            favoriteButton.tintColor = .lightGray
+//            //         favoriteMovieArray.removeLast()
+//            //          print(favoriteMovieArray)
+//        }
+//  }
+    
+    
+    
     @IBAction func trailerAndReviewButtonTapped(_ sender: UIButton) {
         if embeddedVCHeight.constant == 0 {
             scrollHeight.constant = 1300
@@ -76,6 +96,7 @@ extension DetailViewController {
         movieOverview.text = self.movie.overview
         movieVote.text = String(self.movie.rate)
         movieImage.fetchImage(from: movie.backdropURL.absoluteString)
+        releaseDate.text = self.movie.releaseDate
     }
 }
 

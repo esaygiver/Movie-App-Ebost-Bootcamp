@@ -10,17 +10,17 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
-    @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var tableView: UITableView!
     @IBOutlet var searchBar: UISearchBar!
     
-    var movie = [Movie]()
     var networkManager = NetworkManager()
+    var movie = [Movie]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        tableView.delegate = self
+        tableView.dataSource = self
         searchBar.delegate = self
         searchBar.enablesReturnKeyAutomatically = false
     }
@@ -32,6 +32,13 @@ extension SearchViewController: UISearchBarDelegate {
         searchBar.endEditing(true)
     }
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.movie = []
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard let query = searchBar.text else { return }
         if !query.isEmpty {
@@ -39,7 +46,7 @@ extension SearchViewController: UISearchBarDelegate {
         } else {
             self.movie = []
             DispatchQueue.main.async {
-                self.collectionView.reloadData()
+                self.tableView.reloadData()
             }
         }
     }
@@ -51,35 +58,37 @@ extension SearchViewController {
         networkManager.searchMovies(query: query) { [weak self] (results) in
             self?.movie = results
             DispatchQueue.main.async {
-                self?.collectionView.reloadData()
+                self?.tableView.reloadData()
             }
         }
     }
 }
 
-
-//MARK: - Movie CollectionView Part
-extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//MARK: - Search TableView Part
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movie.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return -10
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchMovieCollectionViewCell", for: indexPath) as! SearchMovieCollectionViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchMovieTableViewCell") as! SearchMovieTableViewCell
         let selectedCell = movie[indexPath.row]
         cell.configureTrends(with: selectedCell)
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.deselectItem(at: indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let searchedMovies = movie[indexPath.row]
         let detailViewController = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         detailViewController.movie = searchedMovies
         self.show(detailViewController, sender: self)
+        
     }
+    
+    
 }

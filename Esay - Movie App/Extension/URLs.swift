@@ -40,7 +40,6 @@ func getURL(on platform: URLs) -> String {
         case .castTMDBPage:
             return "https://www.themoviedb.org/person/"
     }
-    return platform.rawValue
-    }
 
+}
 

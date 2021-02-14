@@ -16,7 +16,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
         
     func configureTrends(with model: Movie) {
         self.movieTitleLabel.text = model.title
-        self.movieImage.fetchImage(from: model.backdropURL.absoluteString ?? "")
+        self.movieImage.fetchImage(from: model.backdropURL.absoluteString)
         
         /// before kf extension
 //        if let url = URL(string: "https://image.tmdb.org/t/p/w500\(model.backdrop_path ?? "")") {

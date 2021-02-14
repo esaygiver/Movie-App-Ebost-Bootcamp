@@ -41,13 +41,13 @@ extension ExtraDetailViewController {
     func getVideo() {
         networkManager.fetchVideo(movieID: self.movie.id ?? 399566) { videos in
             self.video = videos
-            guard let url = URL(string: "https://www.youtube.com/watch?v=\(self.video.first!.key)") else {
-                return
-            }
-            DispatchQueue.main.async {
-                self.webView.loadRequest(URLRequest(url: url))
+            if let url = URL(string: "https://www.youtube.com/watch?v=\(self.video.first?.key ?? "" )") {
+                DispatchQueue.main.async {
+                    self.webView.loadRequest(URLRequest(url: url))
 
+                }
             }
+            
         }
     }
 }

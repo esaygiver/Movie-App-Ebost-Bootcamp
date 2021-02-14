@@ -15,7 +15,9 @@ enum MovieAPI {
     case cast(movieID: Int)
     case video(movieID: Int)
     case review(movieID: Int)
+    case runtime(movieID: Int)
     case search(query: String)
+    
 
 }
 
@@ -42,11 +44,13 @@ extension MovieAPI: TargetType {
             return "movie/\(movieID)/reviews"
         case .search(_):
             return "search/movie"
+        case .runtime(movieID: let movieID):
+            return "movie/\(movieID)"
         }
     }
     var method: Moya.Method {
         switch self {
-        case .popular, .trends, .cast(_), .video(_), .review(_), .search(_):
+        case .popular, .trends, .cast(_), .video(_), .review(_), .search(_), .runtime(_):
             return .get
         }
     }
@@ -57,7 +61,7 @@ extension MovieAPI: TargetType {
     
     var task: Task {
         switch self {
-        case .popular, .trends, .cast, .video(_), .review(_):
+        case .popular, .trends, .cast, .video(_), .review(_), .runtime(_):
             return .requestParameters(parameters: ["api_key" : APIKey], encoding: URLEncoding.queryString)
         case .search(query: let query):
             return .requestParameters(parameters: ["api_key" : APIKey, "query": query], encoding: URLEncoding.queryString)

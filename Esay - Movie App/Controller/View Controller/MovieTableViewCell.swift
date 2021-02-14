@@ -15,6 +15,7 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet var moviePosterImage: UIImageView!
     @IBOutlet var movieReleaseDate: UILabel!
     @IBOutlet var shadowLayerOfCell: UIImageView!
+    @IBOutlet weak var movieRate: UILabel!
     @IBOutlet var movieOverview: UILabel! {
         didSet {
             movieOverview.numberOfLines = 3
@@ -29,9 +30,23 @@ class MovieTableViewCell: UITableViewCell {
 
     func configure(with model: Movie) {
         self.movieTitleLabel.text = model.title
-        self.movieReleaseDate.text = "\(model.releaseDate)"
         self.movieOverview.text = model.overview
         self.moviePosterImage.fetchImage(from: model.posterURL.absoluteString)
+        self.movieReleaseDate.text = model.releaseDate
+        switch Int(model.rate) {
+        case 8...10:
+            movieRate.text = "\(String(model.rate)) ⭐️⭐️⭐️⭐️⭐️"
+        case 6...8:
+            movieRate.text = "\(String(model.rate)) ⭐️⭐️⭐️⭐️"
+        case 4...6:
+            movieRate.text = "\(String(model.rate)) ⭐️⭐️⭐️"
+        case 2...4:
+            movieRate.text = "\(String(model.rate)) ⭐️⭐️"
+        case 1...2:
+            movieRate.text = "\(String(model.rate)) ⭐️"
+        default:
+            movieRate.text = "No rate given"
+        }
     }
  }
 
