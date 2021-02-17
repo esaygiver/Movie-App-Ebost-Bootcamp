@@ -30,7 +30,6 @@ class DetailViewController: UIViewController {
     
     public var favorites: Favorites?
     private let realm = try! Realm()
-    public var completionHandler: (() -> Void)?
     
     public var networkManager = NetworkManager()
     
@@ -63,7 +62,8 @@ class DetailViewController: UIViewController {
               favoriteMovies.MovieTitle = title
               favoriteMovies.MovieRate = rate
               realm.add(favoriteMovies)
-              completionHandler?()
+              realm.refresh()
+              
               
               try! realm.commitWrite()
               print(favoriteMovies)

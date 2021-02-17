@@ -10,5 +10,8 @@ pod 'Alamofire', '~> 5.4'
 pod 'Kingfisher', '~> 6.0'
 pod 'Moya', '~> 14.0'
 pod 'RealmSwift'
+pod "Connectivity"
+pod 'Firebase/Core'
+pod 'Firebase/Database'
 
 end

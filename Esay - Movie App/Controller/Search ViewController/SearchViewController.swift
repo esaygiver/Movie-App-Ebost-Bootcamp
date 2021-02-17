@@ -89,6 +89,5 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         self.show(detailViewController, sender: self)
         
     }
-    
-    
+
 }

@@ -12,6 +12,9 @@
 		8447187425D9182E0070AACD /* SearchMovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8447187325D9182E0070AACD /* SearchMovieTableViewCell.swift */; };
 		8447187625DA9C850070AACD /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8447187525DA9C850070AACD /* Favorites.swift */; };
 		8447187825DAA1D80070AACD /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8447187725DAA1D80070AACD /* FavoritesViewController.swift */; };
+		8449FEC025DD70EF0061168D /* PreDataLoad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8449FEBF25DD70EF0061168D /* PreDataLoad.storyboard */; };
+		8449FEC325DD71910061168D /* PreLoadScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8449FEC225DD71910061168D /* PreLoadScreenViewController.swift */; };
+		8449FEC525DDABE50061168D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8449FEC425DDABE50061168D /* GoogleService-Info.plist */; };
 		845A57FB258A36690036D105 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845A57FA258A36690036D105 /* AppDelegate.swift */; };
 		845A57FD258A36690036D105 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845A57FC258A36690036D105 /* SceneDelegate.swift */; };
 		845A57FF258A36690036D105 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845A57FE258A36690036D105 /* ViewController.swift */; };
@@ -41,7 +44,10 @@
 		8447187325D9182E0070AACD /* SearchMovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieTableViewCell.swift; sourceTree = "<group>"; };
 		8447187525DA9C850070AACD /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
 		8447187725DAA1D80070AACD /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FavoritesViewController.swift; path = ../FavoritesViewController.swift; sourceTree = "<group>"; };
-		845A57F7258A36690036D105 /* Esay - Movie App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Esay - Movie App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8449FEBF25DD70EF0061168D /* PreDataLoad.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PreDataLoad.storyboard; sourceTree = "<group>"; };
+		8449FEC225DD71910061168D /* PreLoadScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreLoadScreenViewController.swift; sourceTree = "<group>"; };
+		8449FEC425DDABE50061168D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		845A57F7258A36690036D105 /* MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		845A57FA258A36690036D105 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		845A57FC258A36690036D105 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		845A57FE258A36690036D105 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +113,14 @@
 			path = "Favorite ViewController";
 			sourceTree = "<group>";
 		};
+		8449FEC125DD716C0061168D /* PreLoadScreenViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8449FEC225DD71910061168D /* PreLoadScreenViewController.swift */,
+			);
+			path = PreLoadScreenViewController;
+			sourceTree = "<group>";
+		};
 		845A57EE258A36690036D105 = {
 			isa = PBXGroup;
 			children = (
@@ -120,7 +134,7 @@
 		845A57F8258A36690036D105 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				845A57F7258A36690036D105 /* Esay - Movie App.app */,
+				845A57F7258A36690036D105 /* MovieApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -136,6 +150,7 @@
 				84F1E6B2258AB12D009D596A /* Controller */,
 				84F1E6B4258AB14E009D596A /* View */,
 				84E736A025C457F50062C99D /* Resource */,
+				8449FEC425DDABE50061168D /* GoogleService-Info.plist */,
 				845A5808258A366E0036D105 /* Info.plist */,
 				845A57FC258A36690036D105 /* SceneDelegate.swift */,
 			);
@@ -146,7 +161,6 @@
 			isa = PBXGroup;
 			children = (
 				846BA33125C1DA60008FE1E8 /* ImageView + KF.swift */,
-				84E736D425C7FE600062C99D /* URLs.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -218,6 +232,7 @@
 			children = (
 				84E736A125C4597F0062C99D /* API.swift */,
 				84E736A325C45CB30062C99D /* NetworkManager.swift */,
+				84E736D425C7FE600062C99D /* URLs.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -225,6 +240,7 @@
 		84F1E6B2258AB12D009D596A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8449FEC125DD716C0061168D /* PreLoadScreenViewController */,
 				84E56EED25D3F00B00634EF7 /* ViewController */,
 				84E56EEE25D3F04300634EF7 /* Detail ViewController */,
 				84E56EEF25D3F08000634EF7 /* Extra Detail ViewController */,
@@ -251,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				845A5800258A36690036D105 /* Main.storyboard */,
+				8449FEBF25DD70EF0061168D /* PreDataLoad.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -274,7 +291,7 @@
 			);
 			name = "Esay - Movie App";
 			productName = "Esay - Movie App";
-			productReference = 845A57F7258A36690036D105 /* Esay - Movie App.app */;
+			productReference = 845A57F7258A36690036D105 /* MovieApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -317,6 +334,8 @@
 			files = (
 				845A5807258A366E0036D105 /* LaunchScreen.storyboard in Resources */,
 				845A5804258A366E0036D105 /* Assets.xcassets in Resources */,
+				8449FEC525DDABE50061168D /* GoogleService-Info.plist in Resources */,
+				8449FEC025DD70EF0061168D /* PreDataLoad.storyboard in Resources */,
 				845A5802258A36690036D105 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -384,6 +403,7 @@
 				84E736DA25C8A3100062C99D /* ExtraDetailViewController.swift in Sources */,
 				84E736A425C45CB30062C99D /* NetworkManager.swift in Sources */,
 				84891D6025BCA58200DCEBFA /* Cast.swift in Sources */,
+				8449FEC325DD71910061168D /* PreLoadScreenViewController.swift in Sources */,
 				84891D6225BCA73600DCEBFA /* CastCollectionViewCell.swift in Sources */,
 				84E571BE25D7326400634EF7 /* ExtraDetail.swift in Sources */,
 				846BA33225C1DA60008FE1E8 /* ImageView + KF.swift in Sources */,
@@ -545,8 +565,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Esaygiver.Esay---Movie-App";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Esaygiver.Esay--Movie-App";
+				PRODUCT_NAME = MovieApp;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -565,8 +585,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Esaygiver.Esay---Movie-App";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Esaygiver.Esay--Movie-App";
+				PRODUCT_NAME = MovieApp;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

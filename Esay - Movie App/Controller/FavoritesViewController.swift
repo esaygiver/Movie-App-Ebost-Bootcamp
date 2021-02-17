@@ -18,28 +18,27 @@ class FavoritesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        favorites = realm.objects(Favorites.self).map({ $0 })
+        favorites = Array(realm.objects(Favorites.self))
         tableView.delegate = self
         tableView.dataSource = self
         tableView.allowsMultipleSelectionDuringEditing = false
-        tableView.reloadData()
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Refresh", style: .done, target: self, action: #selector(refreshButtonTapped))
+        self.realm.autorefresh = true
+        refresh()
 
     }
     
-//    @objc func refreshButtonTapped(_ sender: UIBarButtonItem) {
-//        guard let vc = storyboard?.instantiateViewController(identifier: "DetailViewController") as? DetailViewController else { return }
-//        vc.completionHandler = { [weak self] in
-//            self?.refresh()
-//        }
-//    }
-//
-//    func refresh() {
-//        favorites = realm.objects(Favorites.self).map({ $0 })
-//        DispatchQueue.main.async {
-//            self.tableView.reloadData()
-//        }
-//    }
+    @IBAction func refreshButtonTapped(_ sender: UIButton) {
+        realm.refresh()
+        favorites = Array((realm.objects(Favorites.self)))
+        tableView.reloadData()
+        }
+
+    func refresh() {
+        favorites = Array(realm.objects(Favorites.self))
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
 }
 
 //MARK: - TableView Delegate & DataSource
@@ -53,7 +52,7 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCollectionViewCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let selectedCell = favorites[indexPath.row]
         cell.textLabel?.text = selectedCell.MovieTitle
         cell.detailTextLabel?.text = selectedCell.MovieRate
@@ -79,6 +78,5 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
         }
         try! realm.commitWrite()
     }
-    
     
 }

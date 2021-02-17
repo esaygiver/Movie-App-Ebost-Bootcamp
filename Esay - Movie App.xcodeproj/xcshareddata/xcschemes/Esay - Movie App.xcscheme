@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "845A57F6258A36690036D105"
-               BuildableName = "Esay - Movie App.app"
+               BuildableName = "MovieApp.app"
                BlueprintName = "Esay - Movie App"
                ReferencedContainer = "container:Esay - Movie App.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "845A57F6258A36690036D105"
-            BuildableName = "Esay - Movie App.app"
+            BuildableName = "MovieApp.app"
             BlueprintName = "Esay - Movie App"
             ReferencedContainer = "container:Esay - Movie App.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "845A57F6258A36690036D105"
-            BuildableName = "Esay - Movie App.app"
+            BuildableName = "MovieApp.app"
             BlueprintName = "Esay - Movie App"
             ReferencedContainer = "container:Esay - Movie App.xcodeproj">
          </BuildableReference>

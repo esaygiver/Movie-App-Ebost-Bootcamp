@@ -11,7 +11,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="SsE-rV-SI0">
             <objects>
-                <tabBarController id="Se4-Qi-Jlk" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarController" id="Se4-Qi-Jlk" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="T9k-Ov-7cH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -30,7 +30,7 @@
         <!--MovieApp-->
         <scene sceneID="pRO-bm-JMd">
             <objects>
-                <viewController id="K8U-Af-zSK" customClass="SearchViewController" customModule="Esay___Movie_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="K8U-Af-zSK" customClass="SearchViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="32w-u7-Vz7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -48,7 +48,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchMovieTableViewCell" id="632-xi-fa9" customClass="SearchMovieTableViewCell" customModule="Esay___Movie_App" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchMovieTableViewCell" id="632-xi-fa9" customClass="SearchMovieTableViewCell" customModule="MovieApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="220"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="632-xi-fa9" id="xSf-la-7dk">
@@ -153,7 +153,7 @@
         <!--MovieApp-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Esay___Movie_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -163,7 +163,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="sectionIndexBackgroundColor" red="0.34404303380000001" green="0.98565526219999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MovieTableViewCell" id="818-9s-XUn" customClass="MovieTableViewCell" customModule="Esay___Movie_App" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MovieTableViewCell" id="818-9s-XUn" customClass="MovieTableViewCell" customModule="MovieApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="220"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="818-9s-XUn" id="B0p-f9-K1P">
@@ -193,7 +193,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vote" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCW-64-Tsy">
-                                                    <rect key="frame" x="223" y="167" width="150" height="21"/>
+                                                    <rect key="frame" x="180" y="167" width="193" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="150" id="csb-Ob-IL0"/>
                                                         <constraint firstAttribute="height" constant="21" id="do3-yd-PhY"/>
@@ -232,9 +232,8 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="umO-8d-sWB" secondAttribute="trailing" constant="10" id="IoL-Rf-4p8"/>
                                                 <constraint firstAttribute="bottom" secondItem="6N4-ob-43d" secondAttribute="bottom" constant="4" id="JWC-mB-AX2"/>
                                                 <constraint firstItem="6N4-ob-43d" firstAttribute="leading" secondItem="B0p-f9-K1P" secondAttribute="leading" constant="4" id="Yef-rU-H46"/>
-                                                <constraint firstItem="OCW-64-Tsy" firstAttribute="leading" secondItem="Zqo-F2-waY" secondAttribute="trailing" constant="93" id="Ysq-kn-hBl"/>
+                                                <constraint firstItem="OCW-64-Tsy" firstAttribute="leading" secondItem="Zqo-F2-waY" secondAttribute="trailing" constant="50" id="Ysq-kn-hBl"/>
                                                 <constraint firstItem="umO-8d-sWB" firstAttribute="leading" secondItem="Zqo-F2-waY" secondAttribute="trailing" constant="10" id="cjp-vF-qmH"/>
-                                                <constraint firstItem="wdc-0L-vDR" firstAttribute="leading" secondItem="Zqo-F2-waY" secondAttribute="trailing" constant="10" id="gbg-zM-duT"/>
                                                 <constraint firstItem="KVM-lt-plK" firstAttribute="leading" secondItem="Zqo-F2-waY" secondAttribute="trailing" constant="10" id="gyv-5H-BM9"/>
                                                 <constraint firstItem="6N4-ob-43d" firstAttribute="top" secondItem="B0p-f9-K1P" secondAttribute="top" constant="4" id="oiY-Mn-LO5"/>
                                                 <constraint firstItem="Zqo-F2-waY" firstAttribute="top" secondItem="B0p-f9-K1P" secondAttribute="top" constant="10" id="os6-EA-kI6"/>
@@ -274,7 +273,7 @@
                                     <inset key="sectionInset" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieCollectionViewCell" id="wvc-Jc-O6i" customClass="MovieCollectionViewCell" customModule="Esay___Movie_App" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieCollectionViewCell" id="wvc-Jc-O6i" customClass="MovieCollectionViewCell" customModule="MovieApp" customModuleProvider="target">
                                         <rect key="frame" x="10" y="11" width="130" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="dWM-rA-de4">
@@ -366,7 +365,7 @@
         <!--Extra Detail View Controller-->
         <scene sceneID="tHO-Sx-IlO">
             <objects>
-                <viewController storyboardIdentifier="ExtraDetailViewController" id="FDi-0m-b29" customClass="ExtraDetailViewController" customModule="Esay___Movie_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ExtraDetailViewController" id="FDi-0m-b29" customClass="ExtraDetailViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bWN-A8-cfG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -375,7 +374,7 @@
                                 <rect key="frame" x="0.0" y="270" width="414" height="466"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReviewCell" id="xYv-80-JW8" customClass="ReviewTableViewCell" customModule="Esay___Movie_App" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReviewCell" id="xYv-80-JW8" customClass="ReviewTableViewCell" customModule="MovieApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="175"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xYv-80-JW8" id="15X-hH-xxh">
@@ -476,10 +475,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5gq-95-yTt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                            <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -494,12 +493,12 @@
         <!--Detail View Controller-->
         <scene sceneID="GC4-sn-fU2">
             <objects>
-                <viewController storyboardIdentifier="DetailViewController" id="7fn-YR-XGw" customClass="DetailViewController" customModule="Esay___Movie_App" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="sR5-YK-uou">
+                <viewController storyboardIdentifier="DetailViewController" id="7fn-YR-XGw" customClass="DetailViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sR5-YK-uou">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cGW-E7-dsM">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cGW-E7-dsM">
                                 <rect key="frame" x="0.0" y="44" width="414" height="1207"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c4Y-V1-FtG">
@@ -528,7 +527,7 @@
                                                     <inset key="sectionInset" minX="5" minY="0.0" maxX="10" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CastCollectionViewCell" id="iYR-hw-zjz" customClass="CastCollectionViewCell" customModule="Esay___Movie_App" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CastCollectionViewCell" id="iYR-hw-zjz" customClass="CastCollectionViewCell" customModule="MovieApp" customModuleProvider="target">
                                                         <rect key="frame" x="5" y="5" width="115" height="160"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="KAd-xr-wN8">
@@ -585,7 +584,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p5w-EW-LyM">
-                                                <rect key="frame" x="115" y="567" width="184" height="40"/>
+                                                <rect key="frame" x="95" y="572" width="224" height="40"/>
                                                 <color key="backgroundColor" red="1" green="0.58431372550000005" blue="0.0" alpha="0.48464255140000001" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="5XK-cY-N1n"/>
@@ -598,7 +597,7 @@
                                                 </connections>
                                             </button>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="huY-fq-uXe">
-                                                <rect key="frame" x="0.0" y="647" width="414" height="643"/>
+                                                <rect key="frame" x="0.0" y="652" width="414" height="643"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="643" id="xKj-w9-tbs"/>
                                                 </constraints>
@@ -610,11 +609,11 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="PgG-Ft-zrj" secondAttribute="trailing" constant="10" id="8Qo-gu-Adz"/>
-                                            <constraint firstAttribute="trailing" secondItem="p5w-EW-LyM" secondAttribute="trailing" constant="115" id="8m2-C0-7bM"/>
+                                            <constraint firstAttribute="trailing" secondItem="p5w-EW-LyM" secondAttribute="trailing" constant="95" id="8m2-C0-7bM"/>
                                             <constraint firstAttribute="trailing" secondItem="XtC-my-2yg" secondAttribute="trailing" id="AwJ-Z1-PIW"/>
                                             <constraint firstItem="huY-fq-uXe" firstAttribute="leading" secondItem="c4Y-V1-FtG" secondAttribute="leading" id="IRi-NL-sia"/>
                                             <constraint firstItem="XtC-my-2yg" firstAttribute="leading" secondItem="c4Y-V1-FtG" secondAttribute="leading" id="JW7-9e-MfP"/>
-                                            <constraint firstItem="p5w-EW-LyM" firstAttribute="top" secondItem="n7c-TC-Zwu" secondAttribute="bottom" constant="10" id="MUs-vK-ROO"/>
+                                            <constraint firstItem="p5w-EW-LyM" firstAttribute="top" secondItem="n7c-TC-Zwu" secondAttribute="bottom" constant="15" id="MUs-vK-ROO"/>
                                             <constraint firstItem="Kso-9y-2SF" firstAttribute="leading" secondItem="c4Y-V1-FtG" secondAttribute="leading" constant="10" id="O0N-wp-B1T"/>
                                             <constraint firstItem="n7c-TC-Zwu" firstAttribute="leading" secondItem="c4Y-V1-FtG" secondAttribute="leading" constant="5" id="P7r-Rg-wJ4"/>
                                             <constraint firstItem="XtC-my-2yg" firstAttribute="top" secondItem="PgG-Ft-zrj" secondAttribute="bottom" constant="5" id="Qm5-d9-Ufd"/>
@@ -622,7 +621,7 @@
                                             <constraint firstItem="huY-fq-uXe" firstAttribute="top" secondItem="p5w-EW-LyM" secondAttribute="bottom" constant="40" id="YiV-A9-Df8"/>
                                             <constraint firstItem="n7c-TC-Zwu" firstAttribute="top" secondItem="Kso-9y-2SF" secondAttribute="bottom" id="ZFU-mX-hk2"/>
                                             <constraint firstAttribute="height" constant="1300" id="ZqE-4u-khf"/>
-                                            <constraint firstItem="p5w-EW-LyM" firstAttribute="leading" secondItem="c4Y-V1-FtG" secondAttribute="leading" constant="115" id="aHt-61-pJC"/>
+                                            <constraint firstItem="p5w-EW-LyM" firstAttribute="leading" secondItem="c4Y-V1-FtG" secondAttribute="leading" constant="95" id="aHt-61-pJC"/>
                                             <constraint firstItem="Kso-9y-2SF" firstAttribute="top" secondItem="XtC-my-2yg" secondAttribute="bottom" id="cf3-gz-pHA"/>
                                             <constraint firstAttribute="trailing" secondItem="Kso-9y-2SF" secondAttribute="trailing" constant="5" id="hHO-Wf-T1Q"/>
                                             <constraint firstAttribute="height" constant="1300" id="vC0-hU-ppL"/>
@@ -684,7 +683,6 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="c4Y-V1-FtG" firstAttribute="leading" secondItem="cGW-E7-dsM" secondAttribute="leading" id="4G4-12-ZJl"/>
-                                    <constraint firstAttribute="height" constant="1300" id="6En-vF-Zbi"/>
                                     <constraint firstAttribute="trailing" secondItem="vN2-g1-2dW" secondAttribute="trailing" constant="10" id="6Qh-Gt-mke"/>
                                     <constraint firstAttribute="trailing" secondItem="Cgi-V5-SNk" secondAttribute="trailing" constant="10" id="9xr-XS-kPw"/>
                                     <constraint firstItem="vN2-g1-2dW" firstAttribute="top" secondItem="cGW-E7-dsM" secondAttribute="top" constant="10" id="BZ3-iW-6Dd"/>
@@ -731,7 +729,7 @@
         <!--Favorites-->
         <scene sceneID="16q-GC-PIM">
             <objects>
-                <viewController id="8Wn-kH-Uw0" customClass="FavoritesViewController" customModule="Esay___Movie_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8Wn-kH-Uw0" customClass="FavoritesViewController" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nEE-Ao-ZPO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -776,7 +774,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3Lv-c4-OcW"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Favorites" id="wbh-C7-ia7"/>
+                    <navigationItem key="navigationItem" title="Favorites" id="wbh-C7-ia7">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="arrow.clockwise" catalog="system" id="LwT-5a-K9c">
+                            <connections>
+                                <action selector="refreshButtonTapped:" destination="8Wn-kH-Uw0" id="zvc-Ie-wsC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Xsg-jj-7vO" id="oTf-12-dbd"/>
                     </connections>
@@ -797,7 +801,7 @@
                         <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                            <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
                             <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -824,7 +828,7 @@
                         <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                            <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -838,6 +842,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="play.fill" catalog="system" width="116" height="128"/>
         <image name="star" width="128" height="128"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
