@@ -8,7 +8,6 @@
 
 import UIKit
 import Connectivity
-import FirebaseDatabase
 
 class PreLoadScreenViewController: UIViewController {
 
@@ -16,7 +15,6 @@ class PreLoadScreenViewController: UIViewController {
     @IBOutlet weak var companyNameLabel: UILabel!
     
     let connectivity = Connectivity()
-    let ref = Database.database().reference()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,19 +75,13 @@ class PreLoadScreenViewController: UIViewController {
     
     func showCompanyName() {
         loadingActivityIndicator.isHidden = true
-        ref.child("companyTitle").observeSingleEvent(of: .value) { (snapshot) in
-            let companyTitle = snapshot.value as? String
-            self.companyNameLabel.text = companyTitle
-        }
+        companyNameLabel.text = "MovieDB"
         companyNameLabel.isHidden = false
     }
     
     func changeRootViewController() {
         let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
         let tabController = mainStoryBoard.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
-      
-//        let navigationController = tabController.viewControllers![0] as! UINavigationController
-//        UIApplication.shared.windows.first?.rootViewController = navigationController
         UIApplication.shared.windows.first?.rootViewController = tabController
         UIApplication.shared.windows.first?.makeKeyAndVisible()
         

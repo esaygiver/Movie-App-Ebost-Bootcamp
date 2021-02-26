@@ -13,23 +13,6 @@ class NetworkManager: Networkable {
     
     var provider = MoyaProvider<MovieAPI>(plugins: [NetworkLoggerPlugin()])
 
-//    func fetchMovieRuntime(movieID: Int, completion: @escaping (ExtraDetail) -> ()) {
-//        provider.request(.runtime(movieID: movieID)) { result in
-//            switch result {
-//            case let .success(response):
-//                do {
-//                    let results = try JSONDecoder().decode(ExtraDetail., from: response.data)
-//                    completion(results.runtime)
-//                } catch let error {
-//                    dump(error)
-//                }
-//            case let .failure(error):
-//                dump(error)
-//            }
-//        }
-//    }
-//
-//
     func searchMovies(query: String, completion: @escaping ([Movie]) -> ()) {
         provider.request(.search(query: query)) { result in
             switch result {
